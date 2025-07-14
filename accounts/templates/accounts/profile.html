@@ -1,0 +1,61 @@
+{% extends "includes/base.html" %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="profile-info">
+
+    <h2>My Profile</h2>
+
+    <section class="user-details">
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- Add more user details here if needed -->
+    </section>
+
+    <section class="user-reservations">
+
+        <h3>Upcoming Reservations</h3>
+
+        {% if upcoming_reservations %}
+        <ul class="reservations-list">
+            {% for reservation in upcoming_reservations %}
+            <li class="reservation-item">
+                <strong>{{ reservation.venue.name }}</strong> 
+                — {{ reservation.date }} at {{ reservation.time|time:"H:i" }}<br>
+                Guests: {{ reservation.guests }}<br>
+                Status: <em>{{ reservation.get_status_display }}</em><br>
+                Table: {% if reservation.table %}{{ reservation.table.number }} ({{ reservation.table.seats }} seats){% else %}Not assigned{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No upcoming reservations.</p>
+        {% endif %}
+
+        <h3>Past Reservations</h3>
+
+        {% if past_reservations %}
+        <ul class="reservations-list past-reservations">
+            {% for reservation in past_reservations %}
+            <li class="reservation-item">
+                <strong>{{ reservation.venue.name }}</strong> 
+                — {{ reservation.date }} at {{ reservation.time|time:"H:i" }}<br>
+                Guests: {{ reservation.guests }}<br>
+                Status: <em>{{ reservation.get_status_display }}</em><br>
+                Table: {% if reservation.table %}{{ reservation.table.number }} ({{ reservation.table.seats }} seats){% else %}Not assigned{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No past reservations.</p>
+        {% endif %}
+
+    </section>
+    </div>
+{% endblock %}

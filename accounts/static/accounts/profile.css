@@ -1,0 +1,143 @@
+.profile-container {
+    background-color: #2a2a2a;             /* Dark gray background for the container */
+    padding: 40px 60px;                      /* Vertical 40px, horizontal 60px padding */
+    border-radius: 10px;                     /* Rounded corners with 10px radius */
+    box-shadow: 0 0 25px rgba(255,255,255,0.1); /* Soft white glow shadow */
+    max-width: 720px;                        /* Max width to limit container size */
+    margin: 60px auto;                       /* Center horizontally, 60px vertical margin */
+    color: white;                          /* Text color white */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean sans-serif font */
+}
+
+.profile-container h2 {
+    text-align: center;                     /* Center the heading text */
+    margin-bottom: 40px;                    /* Space below heading */
+    font-weight: 700;                       /* Bold font weight */
+    font-size: 2.4rem;                      /* Large font size */
+    color: #eee;                          /* Light gray text */
+}
+
+/* Container for user basic info (username/email) */
+.profile-basic-info {
+    display: flex;                          /* Use flexbox for layout */
+    flex-direction: column;                 /* Stack items vertically */
+    gap: 16px;                              /* Space between flex items */
+    margin-bottom: 50px;                    /* Space below this block */
+}
+
+.profile-basic-info p {
+    display: flex;                          /* Flex container for label + value */
+    max-width: 500px;                       /* Limit width */
+    font-size: 1.25rem;                     /* Larger font */
+    border-bottom: 1px solid #444;        /* Thin gray underline */
+    padding-bottom: 10px;                   /* Padding under text */
+    margin: 0;                              /* Remove default margin */
+}
+
+.profile-basic-info strong {
+    min-width: 180px;                       /* Fixed width for label column */
+    color: #007bff;                       /* Bright blue text */
+    font-weight: 700;                       /* Bold text */
+    display: inline-block;                  /* Allows width to apply */
+}
+
+/* Profile details section (other user info if any) */
+.profile-info {
+    display: grid;                          /* Grid layout */
+    grid-template-columns: 200px 1fr;       /* Two columns: label + content */
+    row-gap: 18px;                          /* Vertical space between rows */
+    column-gap: 30px;                       /* Horizontal space between columns */
+    font-size: 1.1rem;                      /* Slightly larger font */
+    align-items: center;                    /* Vertically center grid items */
+    border-top: 1px solid #444;           /* Top border line */
+    padding-top: 30px;                      /* Padding above content */
+    margin-bottom: 50px;                    /* Space below this section */
+}
+
+.profile-info strong {
+    color: #007bff;                       /* Bright blue text for labels */
+    justify-self: end;                      /* Align labels to right */
+    font-weight: 600;                       /* Semi-bold font weight */
+}
+
+/* Reservations */
+.reservations-section {
+    margin-bottom: 30px;                    /* Space below reservations */
+}
+
+.reservations-section h3 {
+    font-size: 1.7rem;                      /* Larger heading font */
+    border-bottom: 2px solid #007bff;     /* Bright blue underline */
+    padding-bottom: 10px;                   /* Padding below heading */
+    margin-bottom: 25px;                    /* Space below heading */
+    font-weight: 700;                       /* Bold font weight */
+}
+
+.reservation-card {
+    background-color: #3a3a3a;            /* Darker gray background */
+    padding: 22px 25px;                     /* Padding inside card */
+    margin-bottom: 18px;                    /* Space below each card */
+    border-radius: 10px;                    /* Rounded corners */
+    box-shadow: 0 0 14px rgba(0,123,255,0.35); /* Soft blue shadow */
+    transition: box-shadow 0.3s ease;       /* Smooth shadow transition on hover */
+    display: grid;                          /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+    row-gap: 12px;                          /* Vertical spacing between rows */
+    column-gap: 28px;                       /* Horizontal spacing between columns */
+    align-items: center;                    /* Vertical center alignment */
+}
+
+.reservation-card:hover {
+    box-shadow: 0 0 20px rgba(0,123,255,0.7); /* Stronger blue shadow on hover */
+}
+
+.reservation-details {
+    font-size: 1.1rem;                      /* Slightly bigger font for details */
+    color: #ccc;                          /* Light gray text */
+}
+
+/* Status badges */
+.reservation-status {
+    font-weight: 700;                       /* Bold text */
+    padding: 5px 14px;                      /* Padding inside badge */
+    border-radius: 5px;                     /* Rounded corners */
+    text-transform: capitalize;             /* Capitalize first letter */
+    justify-self: start;                    /* Align left in grid */
+    width: fit-content;                     /* Shrink to fit content */
+    font-size: 1rem;                        /* Normal font size */
+}
+
+.status-pending {
+    background-color: #ffc107;            /* Yellow background for pending */
+    color: #333;                          /* Dark text */
+}
+
+.status-confirmed {
+    background-color: #28a745;            /* Green background for confirmed */
+    color: white;                         /* White text */
+}
+
+.status-cancelled {
+    background-color: #ff4d4f;            /* Red background for cancelled */
+    color: white;                         /* White text */
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .profile-basic-info p,
+    .profile-info {
+        grid-template-columns: 1fr !important;  /* Single column on small screens */
+        display: block !important;              /* Block display for easier stacking */
+    }
+    .profile-basic-info strong,
+    .profile-info strong {
+        display: block;                         /* Labels on their own line */
+        margin-bottom: 6px;                     /* Space below label */
+        min-width: auto;                        /* Reset fixed width */
+        justify-self: start !important;         /* Align left */
+    }
+    .reservation-card {
+        grid-template-columns: 1fr !important;  /* Single column for cards */
+        row-gap: 14px !important;               /* Increase vertical spacing */
+    }
+}
